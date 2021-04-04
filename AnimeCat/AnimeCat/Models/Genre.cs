@@ -13,13 +13,14 @@ namespace AnimeCat.Models
             AnimeGenres = new HashSet<AnimeGenre>();
         }
 
+        [Key]
         public int GenreId { get; set; }
 
-        [Required(ErrorMessage ="Поле не повинно бути порожнім")]
-        [Display(Name = "Назва")]
+        [Required]
+        [MaxLength(20)]
         public string GenreName { get; set; }
 
-        [Display(Name = "Інформація")]
+        [Required]
         public string Description { get; set; }
         
 
