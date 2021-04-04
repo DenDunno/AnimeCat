@@ -15,7 +15,7 @@ namespace AnimeCat.Models
         public int AnimeId { get; set; }
         public string Poster { get; set; }
         public string AnimeName { get; set; }
-        public int Rating { get; set; }
+        public float Rating { get; set; }
         public int AnimeInfoId { get; set; }
 
         public virtual AnimeInfo AnimeInfo { get; set; }

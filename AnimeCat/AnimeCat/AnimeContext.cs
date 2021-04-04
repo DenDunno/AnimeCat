@@ -13,7 +13,6 @@ namespace AnimeCat.Models
         public virtual DbSet<AnimeGenre> AnimeGenres { get; set; }
         public virtual DbSet<AnimeTranslation> AnimeTranslations { get; set; }
         public virtual DbSet<Translation> Translations { get; set; }
-        public virtual DbSet<AnimeUser> AnimeUsers { get; set; }
         public virtual DbSet<Genre> Genres { get; set; }
         public virtual DbSet<Comment> Comments { get; set; }
 
