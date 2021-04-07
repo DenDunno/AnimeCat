@@ -10,20 +10,23 @@ namespace AnimeCat
 {
     public class Startup
     {
+        private readonly IConfiguration _config;
+
+
         public Startup(IConfiguration configuration)
         {
-            Configuration = configuration;
+            _config = configuration;
         }
 
-        public IConfiguration Configuration { get; }
 
         public void ConfigureServices(IServiceCollection services)
         {
-
-            string connection = Configuration.GetConnectionString("DefaultConnection");
+            string connection = _config.GetConnectionString("DefaultConnection");
             services.AddDbContext<AnimeContext>(options => options.UseSqlServer(connection));
             services.AddControllers();
+            services.AddCors();
         }
+
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
@@ -31,7 +34,12 @@ namespace AnimeCat
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            app.UseHttpsRedirection();
             app.UseRouting();
+            app.UseCors(policy => policy.AllowAnyHeader().AllowAnyMethod().WithOrigins("https://localhost:4200"));
+            app.UseAuthorization();
+
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();

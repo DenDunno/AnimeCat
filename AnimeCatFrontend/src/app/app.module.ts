@@ -1,9 +1,10 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { SpaModule } from 'src/spa/spa.module';
+import { HttpClientModule } from '@angular/common/http';
 
-import { AppRoutingModule } from './app-routing.module';
+
 import { AppComponent } from './app.component';
+import { from } from 'rxjs';
 
 @NgModule({
   declarations: [
@@ -11,8 +12,7 @@ import { AppComponent } from './app.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule, 
-    SpaModule
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
